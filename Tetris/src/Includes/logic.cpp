@@ -10,7 +10,7 @@ bool softDropSwitch;
 int framerate{ 4 };
 
 Block Game::GetRandomBlock() {
-    Block generatedBlock(rand() % 8);
+    Block generatedBlock(rand() % 7);
     return generatedBlock;
 }
 
@@ -63,7 +63,12 @@ void Game::Run() {
         screen.PushBlockToScreen(block, pCurrentBlockData);
 
         if (bottomOfScreen) {
-            //logic
+            screen.LockBlockToScreen(block, pCurrentBlockData);
+            originX = 5;
+            originY = 2;
+            block = GetRandomBlock();
+            block.rotation = 0;
+            bottomOfScreen = false;
         }
 
         screen.DrawScreen();

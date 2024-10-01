@@ -10,9 +10,9 @@ private:
     //main screen
     char tiles[10][20]; //tiles[x value][y value] -> the top left of the grid is tiles[0][0] while the bottom right is tiles[10][20].
     int screenWidth{ 10 };
+    char placedBlocks[10][20];
     int screenHeight{ 20 };
     int spacing{ 2 };
-    char placedBlocks[10][20];
 
     //side screens
     char nextTiles[6][6] = {

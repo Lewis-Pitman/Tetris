@@ -12,19 +12,22 @@ void Screen::ClearScreen() {
 
     for (i = 0; i < screenWidth; i++) {
         for (j = 0; j < screenHeight; j++) {
-            tiles[i][j] = ' ';
-        }
-    }
-
-    for (i = 0; i < screenWidth; i++) {
-        for (j = 0; j < screenHeight; j++) {
-            placedBlocks[i][j] = ' ';
+            tiles[i][j] = placedBlocks[i][j];
         }
     }
 
 }
 
-Screen::Screen() : screenWidth(10), screenHeight(20), spacing(2) { ClearScreen(); pTiles = tiles; }
+Screen::Screen() : screenWidth(10), screenHeight(20), spacing(2) { 
+    ClearScreen(); 
+    pTiles = tiles; 
+
+    for (int i = 0; i < screenWidth; i++) {
+        for (int j = 0; j < screenHeight; j++) {
+            placedBlocks[i][j] = ' ';
+        }
+    }
+}
 
 void Screen::PushBlockToScreen(Block block, BlockData* data) {
     for (int i = 0; i < 4; i++) {

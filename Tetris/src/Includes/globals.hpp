@@ -10,6 +10,7 @@ extern bool bottomOfScreen;
 class BlockData;
 extern BlockData currentBlockData;
 extern BlockData* pCurrentBlockData;
+extern char placedBlocks[10][20];
 
 extern bool gameActive;
 extern int framerate;
