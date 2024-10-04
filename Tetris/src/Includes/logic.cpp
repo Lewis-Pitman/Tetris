@@ -1,3 +1,4 @@
+#include <iostream>
 #include <cstdlib> //Used for rand()
 #include <ctime> //Used for srand(time(NULL)) to get a random seed
 #include <conio.h> //_kbhit() and _getch()
@@ -7,7 +8,7 @@
 
 char input;
 bool softDropSwitch;
-int framerate{ 4 };
+int framerate{ 1 };
 
 Block Game::GetRandomBlock() {
     Block generatedBlock(rand() % 7);
@@ -71,7 +72,9 @@ void Game::Run() {
             bottomOfScreen = false;
         }
 
+        block.type = block.type;
         screen.DrawScreen();
+
         Sleep(1000 / framerate);
 	}
 }

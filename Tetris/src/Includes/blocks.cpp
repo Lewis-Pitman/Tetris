@@ -28,10 +28,14 @@ void Block::Move(int direction) {
             if (pCurrentBlockData->blockData[type][rotation][0][i] == 0) {//left border
                 validMove = false;
             }
+            else {
+                if (placedBlocks[pCurrentBlockData->blockData[type][rotation][0][i] - 1][pCurrentBlockData->blockData[type][rotation][1][i]] == '#') {
+                     validMove = false;
+                }
+            }
         }
         if (validMove) {
             originX--;
-
         }
     }
     else {//right
@@ -40,7 +44,13 @@ void Block::Move(int direction) {
             if (pCurrentBlockData->blockData[type][rotation][0][i] == 9) {//right border
                 validMove = false;
             }
+            else {
+                if (placedBlocks[pCurrentBlockData->blockData[type][rotation][0][i] + 1][pCurrentBlockData->blockData[type][rotation][1][i]] == '#') {
+                    validMove = false;
+                }
+            }
         }
+
         if (validMove) {
             originX++;
         }
@@ -96,60 +106,35 @@ void Block::Down() {
 void Block::ValidateRotation(int desiredRotation) {
     //This function checks whether a rotation will result in the block rotating out of bounds. If it does, we move the block to the side to allow room for the rotation.
 
+    bool currentlyValid = true;
+
     for (int i = 0; i < 4; i++) {
-        if (pCurrentBlockData->blockData[type][desiredRotation][0][i] < 0) {
-            originX++;
+        if (pCurrentBlockData->blockData[type][desiredRotation][0][i] < 0 || pCurrentBlockData->blockData[type][desiredRotation][0][i] > 9) {
+            currentlyValid = false;
         }
-        else if (pCurrentBlockData->blockData[type][desiredRotation][0][i] > 9) {
-            originX--;
-        }
+    }
+
+    if (currentlyValid) {
+        rotation = desiredRotation;
     }
 
 }
 
 void Block::Rotate(int direction) {
-    if (direction == 1) {
-        switch (rotation) {
-        case 0://0 -> 270
+    if (direction == 1) { //left
+        if (rotation-- <= 0) {
             ValidateRotation(3);
-            rotation = 3;
-            break;
-        case 1://90 -> 0
-            ValidateRotation(0);
-            rotation = 0;
-            break;
-        case 2://180 -> 90
-            ValidateRotation(1);
-            rotation = 1;
-            break;
-        case 3://270 -> 180
-            ValidateRotation(2);
-            rotation = 2;
-            break;
-        default:
-            break;
+        }
+        else {
+            ValidateRotation(rotation--);
         }
     }
-    else {
-        switch (rotation) {
-        case 0://0 -> 90
-            ValidateRotation(1);
-            rotation = 1;
-            break;
-        case 1://90 -> 180
-            ValidateRotation(2);
-            rotation = 2;
-            break;
-        case 2://180 -> 270
-            ValidateRotation(3);
-            rotation = 3;
-            break;
-        case 3://270 -> 0
+    else { //right
+        if (rotation++ >= 3) {
             ValidateRotation(0);
-            rotation = 0;
-            break;
-        default:
-            break;
+        }
+        else {
+           ValidateRotation(rotation++);
         }
     }
 }

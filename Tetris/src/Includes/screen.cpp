@@ -4,7 +4,8 @@
 #include "screen.hpp"
 #include "blocks.hpp"
 
-char (*pTiles)[20] = nullptr;
+char (*pTiles)[20] = nullptr; //iniutialise the pointer to tiles
+
 
 void Screen::ClearScreen() {
     int i{ 0 };
