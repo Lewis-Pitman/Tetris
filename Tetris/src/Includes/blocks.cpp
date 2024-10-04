@@ -77,6 +77,11 @@ void Block::Down() {
                         tileIsPartOfBlock = true;
                     }
                 }
+
+                if (!tileIsPartOfBlock) {
+                    validMove = false;
+                    bottomOfScreen = true;
+                }
             }
         }
     }
