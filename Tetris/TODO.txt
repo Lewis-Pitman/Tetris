@@ -1,4 +1,4 @@
-Loop through each row to check if all tiles are filled up. if they are, clear it and then move all tiles down
+If a block is at the bottom of the screen as soon as it spawns, end the game
 
 Add scoreboard
 

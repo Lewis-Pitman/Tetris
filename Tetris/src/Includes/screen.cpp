@@ -173,6 +173,39 @@ void Screen::NextBlock(int blockToNext) {
     }
 }
 
+void Screen::FilledRowCheck() {
+    bool currentlyFilled;
+    int row;
+    int column;
+    char temp{ ' ' };
+
+    for (row = 0; row < screenHeight; row++) {
+        currentlyFilled = true;
+        for (column = 0; column < screenWidth; column++) {
+            if (placedBlocks[column][row] != '#') {
+                currentlyFilled = false;
+                break; //If we know the row isn't filled up, theres no point continuing the checks
+            }
+        }
+
+        if (currentlyFilled) {
+            //(logic for adding to score (and possibly increasing speed) goes here)
+
+            for (column = 0; column < screenWidth; column++) { //Clear the row
+                placedBlocks[column][row] = ' ';
+            }
+
+            //Moving blocks down:
+            for (int _row = row; _row > 0; _row--) { //Starting at the line which is filled up, slowly move up the rows
+                for (int _column = 0; _column < screenWidth; _column++) {
+                    placedBlocks[_column][_row] = placedBlocks[_column][_row - 1]; //Make each tile equal to the tile above it
+                }
+            }
+
+        }
+    }
+}
+
 void Screen::DrawLine(int width) {
     std::cout << std::setw(spacing + 1); //start above the first "|"
     for (int i = 0; i < width; i++) {
@@ -237,4 +270,7 @@ void Screen::DrawScreen() {
         }
         std::cout << "\n";
     }
+
+    FilledRowCheck();
+
 }

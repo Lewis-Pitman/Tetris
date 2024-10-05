@@ -41,6 +41,8 @@ private:
     void ClearNextScreen();
     void ClearHoldScreen();
 
+    void FilledRowCheck();
+
 public:
     Screen();
     void ClearScreen();
