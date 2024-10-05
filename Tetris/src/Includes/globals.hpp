@@ -18,6 +18,6 @@ extern bool gameActive;
 extern int framerate;  
 
 extern int nextBlock;  
-extern int heldBlock;  
+extern int heldBlock; 
 
 #endif

@@ -38,6 +38,9 @@ private:
     void DrawHoldScreen(int line);
     void DrawLine(int width);
 
+    void ClearNextScreen();
+    void ClearHoldScreen();
+
 public:
     Screen();
     void ClearScreen();

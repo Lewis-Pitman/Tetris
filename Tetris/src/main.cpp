@@ -25,8 +25,10 @@ char placedBlocks[10][20] = {
 
 
 bool gameActive{ true };
-int nextBlock = 0;
-int heldBlock = 0;
+int nextBlock = -1;
+int heldBlock = -1;
+bool blockHasBeenHeld = false;
+bool holdUsedThisTurn = false;
 
 int main() {
     Game game;

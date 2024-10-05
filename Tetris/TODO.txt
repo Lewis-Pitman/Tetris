@@ -1,8 +1,5 @@
 Loop through each row to check if all tiles are filled up. if they are, clear it and then move all tiles down
 
-Make HOLD work
-make NEXT work
-
 Add scoreboard
 
 Fix rotation bugs??

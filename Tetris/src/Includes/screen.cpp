@@ -42,110 +42,133 @@ void Screen::LockBlockToScreen(Block block, BlockData* data) {
     }
 }
 
+void Screen::ClearHoldScreen() {
+    for (int i = 1; i < 6; i++) {
+        for (int j = 0; j < 6; j++) {//Clear the box but keep "HOLD" at the top
+            holdTiles[i][j] = ' ';
+        }
+    }
+}
+
+
 void Screen::HoldBlock(int blockToHold) {
     switch (blockToHold) {
     case 0:
+        ClearHoldScreen();
         holdTiles[2][3] = '#';
         holdTiles[3][2] = '#';
         holdTiles[2][2] = '#';
         holdTiles[3][3] = '#';
         break;
     case 1:
+        ClearHoldScreen();
         holdTiles[3][1] = '#';
         holdTiles[3][2] = '#';
         holdTiles[3][3] = '#';
         holdTiles[3][4] = '#';
         break;
     case 2:
+        ClearHoldScreen();
         holdTiles[2][4] = '#';
         holdTiles[2][3] = '#';
         holdTiles[3][3] = '#';
         holdTiles[3][2] = '#';
         break;
     case 3:
+        ClearHoldScreen();
         holdTiles[2][1] = '#';
         holdTiles[2][2] = '#';
         holdTiles[3][2] = '#';
         holdTiles[3][3] = '#';
         break;
     case 4:
+        ClearHoldScreen();
         holdTiles[2][2] = '#';
         holdTiles[3][2] = '#';
         holdTiles[4][2] = '#';
         holdTiles[4][3] = '#';
         break;
     case 5:
+        ClearHoldScreen();
         holdTiles[2][3] = '#';
         holdTiles[3][3] = '#';
         holdTiles[4][3] = '#';
         holdTiles[4][2] = '#';
         break;
     case 6:
+        ClearHoldScreen();
         holdTiles[2][2] = '#';
         holdTiles[3][2] = '#';
         holdTiles[4][2] = '#';
         holdTiles[3][3] = '#';
         break;
     default:
-        for (int i = 1; i < 6; i++) {
-            for (int j = 0; j < 6; j++) {//Clear the box but keep "HOLD" at the top
-                holdTiles[i][j] = ' ';
-            }
-        }
+        ClearHoldScreen();
         break;
+    }
+}
+
+void Screen::ClearNextScreen() {
+    for (int i = 1; i < 6; i++) {
+        for (int j = 0; j < 6; j++) {//Clear the box but keep "NEXT" at the top
+            nextTiles[i][j] = ' ';
+        }
     }
 }
 
 void Screen::NextBlock(int blockToNext) {
     switch (blockToNext) {
     case 0:
+        ClearNextScreen();
         nextTiles[2][3] = '#';
         nextTiles[3][2] = '#';
         nextTiles[2][2] = '#';
         nextTiles[3][3] = '#';
         break;
     case 1:
+        ClearNextScreen();
         nextTiles[3][1] = '#';
         nextTiles[3][2] = '#';
         nextTiles[3][3] = '#';
         nextTiles[3][4] = '#';
         break;
     case 2:
+        ClearNextScreen();
         nextTiles[2][4] = '#';
         nextTiles[2][3] = '#';
         nextTiles[3][3] = '#';
         nextTiles[3][2] = '#';
         break;
     case 3:
+        ClearNextScreen();
         nextTiles[2][1] = '#';
         nextTiles[2][2] = '#';
         nextTiles[3][2] = '#';
         nextTiles[3][3] = '#';
         break;
     case 4:
+        ClearNextScreen();
         nextTiles[2][2] = '#';
         nextTiles[3][2] = '#';
         nextTiles[4][2] = '#';
         nextTiles[4][3] = '#';
         break;
     case 5:
+        ClearNextScreen();
         nextTiles[2][3] = '#';
         nextTiles[3][3] = '#';
         nextTiles[4][3] = '#';
         nextTiles[4][2] = '#';
         break;
     case 6:
+        ClearNextScreen();
         nextTiles[2][2] = '#';
         nextTiles[3][2] = '#';
         nextTiles[4][2] = '#';
         nextTiles[3][3] = '#';
         break;
     default:
-        for (int i = 0; i < 6; i++) {
-            for (int j = 1; j < 6; j++) {//Clear the box but keep "NEXT" at the top
-                nextTiles[i][j] = ' ';
-            }
-        }
+        ClearNextScreen();
         break;
     }
 }
