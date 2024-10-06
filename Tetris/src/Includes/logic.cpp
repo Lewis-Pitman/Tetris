@@ -9,6 +9,9 @@ char input;
 bool softDropSwitch;
 int framerate{ 1 };
 int temp;
+int score{ 0 };
+int speed{ 1 };
+int linesCleared{ 0 };
 
 Block Game::GetRandomBlock() {
     Block generatedBlock(rand() % 7);
@@ -23,6 +26,7 @@ Block Game::GetRandomBlock(int type) { //used for holding blocks
 void Game::Run() {
 	Screen screen;
 	srand(time(NULL));
+
     Block nextBlockToGet = GetRandomBlock();
 	Block block = GetRandomBlock();
 
@@ -30,6 +34,11 @@ void Game::Run() {
     blockHasBeenHeld = false;
     holdUsedThisTurn = false;
 
+    score = 0;
+    speed = 1;
+    linesCleared = 0;
+
+    //screen.StartScreen();
 	while (gameActive) {
         block.Down();
 		screen.ClearScreen();
@@ -80,16 +89,22 @@ void Game::Run() {
                 break;
             case 's':
                 if (!softDropSwitch) {
-                    framerate = 8;
+                    framerate = 10;
                     softDropSwitch = true;
                 }
                 else {
-                    framerate = 4;
                     softDropSwitch = false;
                 }
             default:
                 break;
             }
+        }
+
+        if (softDropSwitch) {
+            score++;
+        }
+        else {
+            framerate = speed;
         }
 
         screen.PushBlockToScreen(block, pCurrentBlockData);
@@ -113,4 +128,5 @@ void Game::Run() {
 
         Sleep(1000 / framerate);
 	}
+    screen.GameOverScreen();
 }

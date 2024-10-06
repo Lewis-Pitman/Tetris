@@ -112,6 +112,9 @@ void Block::ValidateRotation(int desiredRotation) {
         if (pCurrentBlockData->blockData[type][desiredRotation][0][i] < 0 || pCurrentBlockData->blockData[type][desiredRotation][0][i] > 9) {
             currentlyValid = false;
         }
+        else if (placedBlocks[pCurrentBlockData->blockData[type][desiredRotation][0][i]][pCurrentBlockData->blockData[type][desiredRotation][1][i]] == '#') {
+            currentlyValid = false;
+        }
     }
 
     if (currentlyValid) {

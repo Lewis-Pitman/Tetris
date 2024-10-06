@@ -1,5 +1,0 @@
-If a block is at the bottom of the screen as soon as it spawns, end the game
-
-Add scoreboard
-
-Fix rotation bugs??

@@ -45,6 +45,8 @@ private:
 
 public:
     Screen();
+    void StartScreen();
+    void GameOverScreen();
     void ClearScreen();
     void PushBlockToScreen(Block block, BlockData* data);
     void LockBlockToScreen(Block block, BlockData* data);

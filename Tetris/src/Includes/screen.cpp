@@ -1,8 +1,10 @@
 #include <iostream>
 #include <iomanip>
+#include <windows.h> //Used for sleep()
 
 #include "screen.hpp"
 #include "blocks.hpp"
+#include "globals.hpp"
 
 char (*pTiles)[20] = nullptr; //iniutialise the pointer to tiles
 
@@ -175,9 +177,14 @@ void Screen::NextBlock(int blockToNext) {
 
 void Screen::FilledRowCheck() {
     bool currentlyFilled;
+    int numberOfClears = 0;
     int row;
     int column;
     char temp{ ' ' };
+
+    if (placedBlocks[5][2] == '#') {
+        gameActive = false;
+    }
 
     for (row = 0; row < screenHeight; row++) {
         currentlyFilled = true;
@@ -189,7 +196,14 @@ void Screen::FilledRowCheck() {
         }
 
         if (currentlyFilled) {
-            //(logic for adding to score (and possibly increasing speed) goes here)
+            numberOfClears++;
+            linesCleared++;
+
+            if (linesCleared % 5 == 0) { //Increases speed based on number of lines cleared. The max speed is 10
+                if (linesCleared <= 50) {
+                speed = (linesCleared / 5) + 1;
+                }
+            }
 
             for (column = 0; column < screenWidth; column++) { //Clear the row
                 placedBlocks[column][row] = ' ';
@@ -204,6 +218,24 @@ void Screen::FilledRowCheck() {
 
         }
     }
+
+    switch (numberOfClears) {
+    case 1:
+        score += 100 * speed;
+        break;
+    case 2:
+        score += 300 * speed;
+        break;
+    case 3:
+        score += 500 * speed;
+        break;
+    case 4:
+        score += 800 * speed;
+        break;
+    default:
+        break;
+    }
+
 }
 
 void Screen::DrawLine(int width) {
@@ -245,6 +277,32 @@ void Screen::DrawMainScreen(int line) {
     std::cout << "|";
 }
 
+void Screen::StartScreen() {
+    system("cls");
+    std::cout << std::setw(15) << "Tetris\n";
+    DrawLine(5);
+    std::cout << "\nThank you for taking the time to look at my project. This is the third project\nI've made in C++, and it took 3 weeks to make.\n";
+    DrawLine(5);
+    std::cout << std::setw(15) << "\nControls:";
+    std::cout << "\nA/D -> Move left/right\nQ/E -> Rotate anticlockwise/clockwise\nW -> Hold block\nS -> Toggle soft drop\n";
+    DrawLine(5);
+    std::cout << std::setw(15) << "\nInformation:";
+    std::cout << "\n- Soft drop is a TOGGLE, please don't hold it down as it may break your game! Only press it once to toggle it on or off\n- Your speed will increase every 5 lines you clear, with a max speed of 11.\n- Please maximise the window and adjust the scale with ctrl and the scroll wheel so everything is visible\n";
+    DrawLine(5);
+    std::cout << "\nThe game will start in 10 seconds.";
+    Sleep(10000);
+}
+
+void Screen::GameOverScreen() {
+    system("cls");
+    std::cout << std::setw(15) << "Tetris\n";
+    DrawLine(5);
+    std::cout << "\nThank you for taking the time to look at my project.\nGiving me a star on Github would be greatly appreciated. Here are some final stats:\n";
+    std::cout << "\nScore: " << score << "\nLines cleared: " << linesCleared << "\nSpeed reached: " << speed;
+    std::cout << "\n\nThe game will close in 10 seconds.";
+    Sleep(10000);
+}
+
 void Screen::DrawScreen() {
     std::cout << "\n";
     DrawLine(screenWidth);
@@ -270,6 +328,8 @@ void Screen::DrawScreen() {
         }
         std::cout << "\n";
     }
+
+    std::cout << "\nScore: " << score << std::setw(35) << "Speed: " << speed;
 
     FilledRowCheck();
 
