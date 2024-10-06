@@ -3,6 +3,8 @@
 
 This is the third project I've worked on, and took around 3 weeks to make. Thank you for taking a look!
 
+# Only works on windows
+
 # Controls
 - A/D -> Move left/right
 - Q/E -> Rotate anticlockwise/clockwise
