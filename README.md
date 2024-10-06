@@ -12,7 +12,7 @@ This is the third project I've worked on, and took around 3 weeks to make. Thank
 - W -> Hold block
 
 # Info
-- To play, click on the green code button, download and extract the zip file, and run Tetris.exe
+- To play, click on "Tetris" under releases on the right of your screen and click on Tetris.exe to download it
 - Clearing 1 line at a time gives you 100 points, 2 lines 300, 3 lines 500 and 4 lines 800. This value is then multiplied by the speed
 - Your speed increases by 1 for every 5 lines you clear. The maximum speed is 11.
 - Soft dropping is a toggle. Please don't hold it down as you may break the game, or make it so your other inputs are not processed.
