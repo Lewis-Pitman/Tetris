@@ -2,9 +2,9 @@
 #include <iomanip>
 #include <windows.h> //Used for sleep()
 
-#include "screen.hpp"
-#include "blocks.hpp"
-#include "globals.hpp"
+#include "Includes/screen.hpp"
+#include "Includes/blocks.hpp"
+#include "Includes/logic.hpp"
 
 char (*pTiles)[20] = nullptr; //iniutialise the pointer to tiles
 

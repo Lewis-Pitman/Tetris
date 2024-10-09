@@ -1,8 +1,10 @@
 #ifndef SCREEN_HPP
 #define SCREEN_HPP
 
-#include "globals.hpp"
-#include "blocks.hpp"
+#include "Includes/blocks.hpp"
+
+extern char (*pTiles)[20];
+extern char placedBlocks[10][20];
 
 class Screen {
 private:

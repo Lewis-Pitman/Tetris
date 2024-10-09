@@ -1,7 +1,12 @@
 #ifndef BLOCKS_HPP
 #define BLOCKS_HPP
 
-#include "globals.hpp"
+extern int originX;
+extern int originY;
+extern bool bottomOfScreen;
+class BlockData;
+extern BlockData currentBlockData;
+extern BlockData* pCurrentBlockData;
 
 class Block {
 private:

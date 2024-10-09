@@ -5,7 +5,6 @@
 #include "Includes/screen.hpp"
 #include "Includes/blocks.hpp"
 #include "Includes/logic.hpp"
-#include "Includes/globals.hpp"
 
 int originX = 5;
 int originY = 2;
@@ -22,7 +21,6 @@ char placedBlocks[10][20] = {
    {' ', ' ', ' ' , ' ' , ' ' , ' ' , ' ' , ' ' , ' ' , ' ' , ' ' , ' ' , ' ' , ' ' , ' ' , ' ' , ' ' , ' ' , ' ' , ' ' },
    {' ', ' ', ' ' , ' ' , ' ' , ' ' , ' ' , ' ' , ' ' , ' ' , ' ' , ' ' , ' ' , ' ' , ' ' , ' ' , ' ' , ' ' , ' ' , ' ' },
 };
-
 
 bool gameActive{ true };
 int nextBlock = -1;

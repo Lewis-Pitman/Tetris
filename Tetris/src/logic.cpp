@@ -3,7 +3,7 @@
 #include <conio.h> //_kbhit() and _getch()
 #include <windows.h> //Used for sleep()
 
-#include "logic.hpp"
+#include "Includes/logic.hpp"
 
 char input;
 bool softDropSwitch;
@@ -38,7 +38,7 @@ void Game::Run() {
     speed = 1;
     linesCleared = 0;
 
-    //screen.StartScreen();
+    screen.StartScreen();
 	while (gameActive) {
         block.Down();
 		screen.ClearScreen();

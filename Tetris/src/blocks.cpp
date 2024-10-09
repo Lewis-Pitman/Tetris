@@ -1,5 +1,5 @@
-#include "blocks.hpp"
-#include "globals.hpp"
+#include "Includes/blocks.hpp"
+#include "Includes/logic.hpp"
 
 BlockData currentBlockData;
 BlockData* pCurrentBlockData = &currentBlockData; //depending on the framerate, we'd need to copy this large variable multiple times a second to draw it to the screen. Using a pointer we don't need to, we only tell it where it is in memory.
